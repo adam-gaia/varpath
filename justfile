@@ -10,3 +10,7 @@ run:
 test:
     cargo lbuild --tests
     cargo nextest run
+
+docs:
+  oranda build
+  oranda serve
