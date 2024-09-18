@@ -4,4 +4,5 @@
 
 </div>
 
-todo
+TODO: Find instances of 'rust-template' or 'TODO' and update for a new project
+
