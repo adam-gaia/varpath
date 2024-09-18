@@ -18,8 +18,29 @@
     },
     "blueprint": {
       "inputs": {
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1726602501,
+        "narHash": "sha256-CjR5wLjo8+zE7WqSVfHS+NOiyFW6HMFMFONa6B8lYR8=",
+        "owner": "numtide",
+        "repo": "blueprint",
+        "rev": "8d92ba0316f78a88bbc6ed3fda445f5699ad827e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "blueprint",
+        "type": "github"
+      }
+    },
+    "blueprint_2": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1726602501,
@@ -37,7 +58,7 @@
     },
     "cargo-nextest-xdg": {
       "inputs": {
-        "blueprint": "blueprint",
+        "blueprint": "blueprint_2",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -98,24 +119,6 @@
         "type": "github"
       }
     },
-    "flake-utils": {
-      "inputs": {
-        "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1710146030,
-        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1711703276,
@@ -151,10 +154,10 @@
     "root": {
       "inputs": {
         "advisory-db": "advisory-db",
+        "blueprint": "blueprint",
         "cargo-nextest-xdg": "cargo-nextest-xdg",
         "crane": "crane",
         "fenix": "fenix",
-        "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs_2",
         "treefmt-nix": "treefmt-nix_2"
       }
