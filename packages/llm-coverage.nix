@@ -4,6 +4,8 @@
   system,
   ...
 }: let
+
+  # TODO: most of this is duplicated from packages/default.nix. Can we consolidate with a module?
   inherit (pkgs) lib;
   craneLib = inputs.crane.mkLib pkgs;
   src = craneLib.cleanCargoSource ../.;
