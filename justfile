@@ -1,13 +1,12 @@
 default:
-  @just --list
+    @just --list
 
 build:
-  cargo lbuild
+    cargo lbuild
 
 run:
-  RUST_LOG=debug cargo lrun
+    RUST_LOG=debug cargo lrun
 
 test:
-  cargo lbuild --tests
-  cargo nextest run
-
+    cargo lbuild --tests
+    cargo nextest run

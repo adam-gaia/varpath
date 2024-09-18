@@ -1,4 +1,9 @@
-{inputs, pkgs, system, ...}: let
+{
+  inputs,
+  pkgs,
+  system,
+  ...
+}: let
   inherit (pkgs) lib;
   craneLib = inputs.crane.mkLib pkgs;
   src = craneLib.cleanCargoSource ../.;
@@ -11,7 +16,6 @@
       "rustc"
     ]);
 
-    
   # Common arguments can be set here to avoid repeating them later
   commonArgs = {
     inherit src;
@@ -36,20 +40,17 @@
   # Build *just* the cargo dependencies, so we can reuse
   # all of that work (e.g. via cachix) when running in CI
   cargoArtifacts = craneLib.buildDepsOnly commonArgs;
-
-    
 in
-craneLibLLvmTools.cargoLlvmCov (commonArgs
-  // {
-    inherit cargoArtifacts;
-})
-
-
+  craneLibLLvmTools.cargoLlvmCov (commonArgs
+    // {
+      inherit cargoArtifacts;
+    })
 # TODO: how do we constrain this package to linux only without constraing the main package?
 #lib.optionalAttrs (!pkgs.stdenv.isDarwin) {
-  #my-crate-llvm-coverage =
-  #craneLibLLvmTools.cargoLlvmCov (commonArgs
-    #// {
-      #inherit cargoArtifacts;
-    #})
+#my-crate-llvm-coverage =
+#craneLibLLvmTools.cargoLlvmCov (commonArgs
+#// {
+#inherit cargoArtifacts;
+#})
 #};
+

@@ -35,8 +35,8 @@
     cargo-nextest-xdg = {
       url = "github:adam-gaia/cargo-nextest-xdg";
       inputs.nixpkgs.follows = "nixpkgs";
-    };    
+    };
   };
 
-  outputs = inputs: inputs.blueprint { inherit inputs; };
+  outputs = inputs: inputs.blueprint {inherit inputs;};
 }

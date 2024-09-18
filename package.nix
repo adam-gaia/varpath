@@ -1,6 +1,9 @@
-{inputs, pkgs, system, ...}:
-let
-
+{
+  inputs,
+  pkgs,
+  system,
+  ...
+}: let
   inherit (pkgs) lib;
 
   craneLib = inputs.crane.mkLib pkgs;
@@ -43,7 +46,6 @@ let
       inherit cargoArtifacts;
     });
 
-  
   checks = {
     # Build the crate as part of `nix flake check` for convenience
     inherit my-crate;
@@ -90,11 +92,13 @@ let
         partitions = 1;
         partitionType = "count";
       });
-    };
- 
+  };
 in
-  my-crate // {
-    passthru = my-crate.passthru // {
-      tests = checks;
-    };
+  my-crate
+  // {
+    passthru =
+      my-crate.passthru
+      // {
+        tests = checks;
+      };
   }
