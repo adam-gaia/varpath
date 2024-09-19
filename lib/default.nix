@@ -26,7 +26,7 @@
       # MY_CUSTOM_VAR = "some value";
     };
   in {
-    inherit src craneLib commonArgs;
+    inherit src lib craneLib commonArgs;
   };
 in {
   inherit mkCrateBuilder;

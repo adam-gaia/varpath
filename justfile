@@ -11,6 +11,9 @@ test:
     cargo lbuild --tests
     cargo nextest run
 
+fmt:
+    treefmt
+
 docs:
     oranda build
     oranda serve
