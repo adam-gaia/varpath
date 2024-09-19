@@ -1,6 +1,9 @@
 default:
     @just --list
 
+check:
+  cargo lclippy
+
 build:
     cargo lbuild
 
