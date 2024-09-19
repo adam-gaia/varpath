@@ -3,7 +3,9 @@
   pkgs,
   perSystem,
 }: let
-  craneLib = inputs.crane.mkLib pkgs; # TODO: this is defined both here and in package.nix. Can we share it in a module?
+  crateBuilder = inputs.self.lib.mkCrateBuilder pkgs;
+  craneLib = crateBuilder.craneLib;
+  # TODO: add treefmt stuff back
   # Treefmt doesn't easily expose the programs with out its flake-parts module (as far as I can tell)
   # This snipit, modified from their default.nix, lets us grab the programs after buiding with our treefmt config
   #  treefmt-module-builder = nixpkgs: configuration: let

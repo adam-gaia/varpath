@@ -12,5 +12,8 @@ test:
     cargo nextest run
 
 docs:
-  oranda build
-  oranda serve
+    oranda build
+    oranda serve
+
+cov:
+    nix build .#packages.x86_64-linux.llm-coverage
