@@ -10,7 +10,7 @@ build:
 run:
     RUST_LOG=debug cargo lrun
 
-doc-test:
+doctest:
     # cargo-nextest doesn't yet support doctests
     # https://github.com/nextest-rs/nextest/issues/16
     cargo ltest --doc
