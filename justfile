@@ -2,7 +2,7 @@ default:
     @just --list
 
 check:
-  cargo lclippy
+    cargo lclippy
 
 build:
     cargo lbuild
@@ -10,9 +10,14 @@ build:
 run:
     RUST_LOG=debug cargo lrun
 
+doc-test:
+    # cargo-nextest doesn't yet support doctests
+    # https://github.com/nextest-rs/nextest/issues/16
+    cargo ltest --doc
+
 test:
     cargo lbuild --tests
-    cargo nextest run
+    cargo nextest run --all-targets
 
 fmt:
     treefmt
