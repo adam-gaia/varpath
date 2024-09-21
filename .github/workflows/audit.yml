@@ -1,8 +1,6 @@
 name: Security audit
-
 permissions:
   contents: read
-
 on:
   pull_request:
     paths:
@@ -10,17 +8,14 @@ on:
       - '**/Cargo.lock'
   push:
     branches:
-    - main
-
+      - main
 env:
   RUST_BACKTRACE: 1
   CARGO_TERM_COLOR: always
   CLICOLOR: 1
-
 concurrency:
   group: "${{ github.workflow }}-${{ github.ref }}"
   cancel-in-progress: true
-
 jobs:
   security_audit:
     permissions:
@@ -30,12 +25,11 @@ jobs:
     # Prevent sudden announcement of a new advisory from failing ci:
     continue-on-error: true
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-    - uses: actions-rs/audit-check@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - uses: actions-rs/audit-check@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
   cargo_deny:
     permissions:
       issues: write # to create issues (actions-rs/audit-check)
@@ -46,8 +40,8 @@ jobs:
         checks:
           - bans licenses sources
     steps:
-    - uses: actions/checkout@v4
-    - uses: EmbarkStudios/cargo-deny-action@v2
-      with:
-        command: check ${{ matrix.checks }}
-        rust-version: stable
+      - uses: actions/checkout@v4
+      - uses: EmbarkStudios/cargo-deny-action@v2
+        with:
+          command: check ${{ matrix.checks }}
+          rust-version: stable
