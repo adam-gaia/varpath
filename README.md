@@ -17,10 +17,9 @@ Project description goes here.
 
 2. Merge this repo with `--allow-unrelated-histories`. This way, we can pull in updates later.
 
-```
+```bash
   git remote add template https://github.com/adam-gaia/rust-template
   git fetch template
-  git checkout
   git merge --allow-unrelated-histories template/main
 ```
 
@@ -28,4 +27,18 @@ Note that you will want to exclude at least
 
 - TODO.md
 
-This process was inspired by [jonhoo's rust ci repo](https://github.com/jonhoo/rust-ci-conf/blob/main/.github/DOCS.md).
+## Cloning this repo
+
+When cloning this repo, set up to pull CI files from https://github.com/epage/\_rust
+
+```bash
+  git remote add ci https://github.com/epage/_rust.git
+  git fetch ci
+  git merge --allow-unrelated-histories ci/main
+```
+
+Grab the files in `.github/workflows/`
+
+## Notes
+
+The merging unrelated history process was inspired by [jonhoo's rust ci repo](https://github.com/jonhoo/rust-ci-conf/blob/main/.github/DOCS.md).
