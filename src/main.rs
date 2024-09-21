@@ -31,7 +31,7 @@ fn main() -> Result<()> {
         }
         None => {
             // TODO
-            info!("TODO: no subcommannd provided");
+            info!("TODO: no subcommand provided");
         }
     }
 
