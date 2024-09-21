@@ -34,7 +34,6 @@ in
             just
             bacon
             oranda
-            typos
             perSystem.cargo-nextest-xdg.default
           ]
           # Include the extra packages we use to build our crate
