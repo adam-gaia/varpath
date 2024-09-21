@@ -34,7 +34,7 @@ When cloning this repo, set up to pull CI files from https://github.com/epage/\_
 ```bash
   git remote add ci https://github.com/epage/_rust.git
   git fetch ci
-  git merge --allow-unrelated-histories ci/main
+  git merge --allow-unrelated-histories template/main
 ```
 
 Grab the files in `.github/workflows/`
