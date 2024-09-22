@@ -191,7 +191,7 @@ fn parse_path_parts<'s>(input: &mut &'s str) -> PResult<(bool, Vec<PathPart>, bo
     let first = opt(parse_path_part).parse_next(input)?;
 
     let mut parts: Vec<PathPart> =
-        repeat(1.., parse_path_part_with_leading_separator).parse_next(input)?;
+        repeat(0.., parse_path_part_with_leading_separator).parse_next(input)?;
 
     let leading_slash = if let Some(first) = first {
         parts.insert(0, first);

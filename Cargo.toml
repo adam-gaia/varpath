@@ -9,6 +9,7 @@ repository = "https://github.com/adam-gaia/varpath"
 
 [dependencies]
 eyre = "0.6.12"
+homedir = "0.3.3"
 log = "0.4.22"
 serde = { version = "1.0.210", features = ["derive"] }
 thiserror = "1.0.64"

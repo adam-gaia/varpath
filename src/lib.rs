@@ -33,6 +33,7 @@ pub use varpath::VarPath;
 #[cfg(test)]
 mod tests {
     use super::*;
+    use homedir::my_home;
     use pretty_assertions::assert_eq;
 
     #[test]
@@ -71,7 +72,6 @@ mod tests {
         let input = "/a/${PWD}/c";
         let env = EnvironmentBuilder::default().with_process_env().build();
         let actual = VarPath::from_str(input).unwrap().eval(&env).unwrap();
-        let expected = PathBuf::from(input);
         assert_ne!(PathBuf::from(input), actual);
     }
 
@@ -80,5 +80,14 @@ mod tests {
         let env = EnvironmentBuilder::default().build();
         let result = VarPath::from_str("/a/${BAD_BAD_BAD}/c").unwrap().eval(&env);
         assert!(result.is_err());
+    }
+
+    #[test]
+    fn test_home() {
+        let input = "${HOME}";
+        let env = EnvironmentBuilder::default().with_process_env().build();
+        let actual = VarPath::from_str(input).unwrap().eval(&env).unwrap();
+        let expected = homedir::my_home().unwrap().unwrap();
+        assert_eq!(expected, actual);
     }
 }

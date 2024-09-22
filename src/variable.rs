@@ -49,7 +49,12 @@ pub fn parse_variable<'s>(input: &mut &'s str) -> PResult<Variable> {
 
 #[cfg(test)]
 mod tests {
+    use crate::environment::EnvironmentBuilder;
+    use pretty_assertions::assert_eq;
+    use pretty_assertions::assert_ne;
+
     use super::*;
+    use homedir::my_home;
 
     #[test]
     fn test_parse_variable_name1() {
@@ -86,5 +91,14 @@ mod tests {
         env.insert(key.to_string(), value.to_string());
         let var = Variable::new(key);
         assert_eq!(var.eval(&env).unwrap(), value);
+    }
+
+    #[test]
+    fn test_home() {
+        let var = Variable::new("HOME");
+        let mut env = EnvironmentBuilder::default().with_process_env().build();
+        let expected = my_home().unwrap().unwrap().display().to_string();
+        let actual = var.eval(&env).unwrap();
+        assert_eq!(expected, actual);
     }
 }
