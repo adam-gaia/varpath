@@ -22,7 +22,7 @@ use winnow::token::take_while;
 use winnow::PResult;
 use winnow::Parser;
 
-#[derive(Debug, Eq, PartialEq)]
+#[derive(Debug, Eq, PartialEq, Clone)]
 pub struct VarPath {
     parts: Vec<PathPart>,
     leading_slash: bool,
@@ -125,7 +125,7 @@ impl Display for VarPath {
     }
 }
 
-#[derive(Debug, Eq, PartialEq)]
+#[derive(Debug, Eq, PartialEq, Clone)]
 struct Word(String);
 impl Word {
     pub fn new(word: &str) -> Self {
@@ -154,7 +154,7 @@ pub fn parse_word<'s>(input: &mut &'s str) -> PResult<Word> {
         .map(|s| Word(s.to_string()))
 }
 
-#[derive(Debug, Eq, PartialEq)]
+#[derive(Debug, Eq, PartialEq, Clone)]
 pub enum PathPart {
     Word(Word),
     Variable(Variable),

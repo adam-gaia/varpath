@@ -19,7 +19,7 @@ mod complex;
 use complex::parse_complex_variable;
 use eyre::bail;
 
-#[derive(Debug, Eq, PartialEq)]
+#[derive(Debug, Eq, PartialEq, Clone)]
 pub struct Variable(String);
 impl Variable {
     pub fn new(name: &str) -> Self {
