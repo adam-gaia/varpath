@@ -12,7 +12,7 @@ eyre = "0.6.12"
 homedir = "0.3.3"
 log = "0.4.22"
 serde = { version = "1.0.210", features = ["derive"] }
-thiserror = "1.0.64"
+thiserror = "2.0.0"
 winnow = "0.6.18"
 
 [dev-dependencies]
